@@ -3,7 +3,7 @@ import sys
 if len(sys.argv) != 2 :
     print("None")
     sys.exit(0)
-
+    
 x = sys.argv[1]
 y = input("What was the parameter? ")
 
