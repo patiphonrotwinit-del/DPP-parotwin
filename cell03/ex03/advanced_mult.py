@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+import sys
+z = sys.argv
+if len(z) > 1 :
+    print("none")
+    sys.exit(0)
 x = 0
 while x <= 10 :
     print(f"Table de {x}: ", end="")
