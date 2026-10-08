@@ -18,34 +18,34 @@ def parse_board(board):
     if not isinstance(board, str):
         raise TypeError("board must be a string")
 
-    rows = board.split("\n")
+    rows = board.split("\n") #ตัดแบ่งบรรทัด
 
     # ตัดบรรทัดว่างท้ายสุดทิ้ง (เผื่อ string ลงท้ายด้วย newline)
     while rows and rows[-1] == "":
-        rows.pop()
+        rows.pop() 
 
     if not rows:
         raise ValueError("board is empty")
 
-    size = len(rows)
+    size = len(rows) #บอร์ด
     for row in rows:
         if len(row) != size:
-            raise ValueError("board must be a square")
+            raise ValueError("board must be a square") #บอร์ดต้องเหลี่ยม
 
     return rows
 
 
 def find_king(rows):
     """หาตำแหน่ง King และยืนยันว่ามีตัวเดียวจริง ๆ"""
-    position = None
-    for r, row in enumerate(rows):
-        for c, square in enumerate(row):
-            if square == KING:
-                if position is not None:
+    position = None 
+    for r, row in enumerate(rows): #กำหนดเลขแนวนอน
+        for c, square in enumerate(row):    #กำหนดเลขแนวตั้ง
+            if square == KING: #ถ้าบอร์ดมี King
+                if position is not None: #King เกิน
                     raise ValueError("more than one king on the board")
                 position = (r, c)
 
-    if position is None:
+    if position is None: #บอร์ดป่าว
         raise ValueError("no king on the board")
     return position
 
@@ -56,9 +56,9 @@ def first_piece_in_direction(rows, start, direction):
     คืนค่า (ตัวหมากตัวแรกที่เจอ, ระยะห่างกี่ช่อง)
     ถ้าเดินจนตกขอบกระดานโดยไม่เจอใคร -> (None, 0)
     """
-    size = len(rows)
-    dr, dc = direction
-    r, c = start[0] + dr, start[1] + dc
+    size = len(rows) #แถวแนวนอน
+    dr, dc = direction #เดินแนวนอน,เดินแนวตั้ง
+    r, c = start[0] + dr, start[1] + dc 
     distance = 1
 
     while 0 <= r < size and 0 <= c < size:
