@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from Rush00.ex00.checkmate import checkmate
+from checkmate import checkmate
 
 def main():
     board = """\
